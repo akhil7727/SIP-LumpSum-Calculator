@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link href="./sipcalculator.css" rel="stylesheet">
+    <title>SIP & LumpSum Calculator</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-dark" id="navbar">
+        <div class="container-fluid">
+            <span class="navbar-brand">SIP & LumpSum Calculator</span>
+        </div>
+    </nav>
+    <div class=" container" align="center">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="sip" value="sip" onclick="getSIP()"
+                checked>
+            <label class="form-check-label" for="exampleRadios1">
+                SIP
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="lumpsum" value="lumpsum" onclick="getLumpSum()">
+            <label class="form-check-label" for="exampleRadios2">
+                LumpSum
+            </label>
+        </div>
+        <br><br>
+        <label id="amount" for="inputAmount">Monthly Investment</label>
+        <p id="sliderAmount">&#8377 <span id="demo" class="fw-bold"></span></p>
+        <div class="slidecontainer">
+            <input type="range" min="500" max="200000" value="500" step="500" class="slider" id="myRange" oninput="calculate()">
+        </div>
+
+
+        <label id="returnRate" for="inputreturn">Expected Return Rate</label>
+        <p id="sliderReturnRate">% <span id="interest" class="fw-bold"></span></p>
+        <div class="slidecontainer">
+            <input type="range" min="1" max="30" value="1" step="0.5" class="slider" id="myRate" oninput="calculate()">
+        </div>
+
+
+        <label id="time" for="inputtime">Time Period</label>
+        <p id="timePeriod">Year <span id="timeP" class="fw-bold"></span></p>
+        <div class="slidecontainer">
+            <input type="range" min="1" max="30" value="1" step="1" class="slider" id="myTime" oninput="calculate()">
+        </div>
+
+        <br> <br>
+        <div class="container flex-column">
+            <div class="row gx-2 justify-content-center ">
+                <div class="col-3">
+                    <div class="fs-5">Amt. Invested:<br><span class="fw-bold fs-3" id="amtInv"></span></div>
+                </div>
+                <div class="col-3">
+                    <div class="fs-5 ">Est.Returns<br><span class="fw-bold fs-3" id="estRet"></span></div>
+                </div>
+            </div>
+        </div><br>
+        <div class="container flex-column">
+            <div class="justify-content-center ">
+                <div class="col-3">
+                    <div class="fs-5">Total Value<br><span class="fw-bold fs-3" id="totalValue"></span></div>
+                </div>
+            </div>
+        </div>
+        <!-- Pie Chart -->
+        <div class="container my-2">
+            
+
+            <div>
+                <canvas id="pieChart" style="max-width: 500px;"></canvas>
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <script src="./sipcalculator.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
